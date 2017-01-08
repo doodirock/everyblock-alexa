@@ -10,7 +10,9 @@ app.launch((request, response) => {
 });
 
 app.intent("GetEvents", (request, response) => {
-    response.say("Chicago looks like its going to have an amazing weekend.  People are going to party for days");
+    let city = request.slot("City");
+    let txt = 'Looks like the city of '+city+' is going to have a lovely weekend';
+    response.say(txt);
   }
 );
 

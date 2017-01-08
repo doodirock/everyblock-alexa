@@ -35,6 +35,11 @@ app.intent("GetEvents", (request, response) => {
           response.say(final);
           response.say('</speak>');
           response.send();
+          response.card({
+            type: 'Simple',
+            title: 'Your '+type+' Report for '+city+'', // this is not required for type Simple
+            content: 'Check out http://chicago.everyblock.com/'+type+'/, for more information.'
+          });          
         } else {
           response.say('<speak>Sorry, but there does not seem to be any reports about '+type+' in this area.');
           response.send();          

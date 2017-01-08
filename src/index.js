@@ -25,11 +25,12 @@ app.intent("GetEvents", (request, response) => {
       .then(function (complete) {
         var events = complete.data.results;
         var listOfstuff = events.map(function (x) {
-            return x.title.replace(/["'&]/g, "");
+            var list = x.title+'<break time="1s"/>'+x.attributes.comment+'<break time="2s"/>';
+            return list.replace(/[&]/g, "");
         });
-        var final = listOfstuff.toString();
-        logger.log(final);
-        response.say('<speak>Here is your '+type+' report for '+city+' <break time="2s"/>.');
+        logger.log(listOfstuff);
+        var final = listOfstuff.slice(0,5).toString();
+        response.say('<speak>Here is your '+type+' top 5 report for '+city+' <break time="2s"/>.');
         response.say(final);
         response.say('</speak>');
         response.send();

@@ -4,7 +4,7 @@ const Blue = require("bluebird");
 
 const app = new alexa.app();
 app.launch((request, response) => {
-  response.say("Alexa hears you loud and clear").send();
+  response.say("Block party is ready to give you info about your hood.  What would you like to know?").send();
   // if this is an async handler you must return false
   //return false;
 });

@@ -25,7 +25,7 @@ app.intent("GetEvents", (request, response) => {
       .then(function (complete) {
         var events = complete.data.results;
         var listOfstuff = events.map(function (x) {
-            return x.title.split('.')[0].replace(/["'&]/g, "");
+            return x.title.replace(/["'&]/g, "");
         });
         var final = listOfstuff.toString();
         logger.log(final);

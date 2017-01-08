@@ -1,0 +1,4 @@
+GetEvents whats going on in {City}
+GetEvents whats going on {Date} in {City}
+GetEvents whats going on {Week} in {City}
+GetNews whats the news for {City}

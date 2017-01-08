@@ -24,12 +24,12 @@ app.intent("GetEvents", (request, response) => {
     ax.get('content/'+city.toLowerCase()+'/topnews/.json?schema='+type)
       .then(function (complete) {
         var events = complete.data.results;
-        var listOfcrimes = events.map(function (x) {
-            return x.title.split(',')[0]
+        var listOfstuff = events.map(function (x) {
+            return x.title.split('.')[0].replace(/["'&]/g, "");
         });
-        var final = listOfcrimes.toString();
+        var final = listOfstuff.toString();
         logger.log(final);
-        response.say('<speak>Here is your '+type+' for '+city+' <break time="2s"/>.');
+        response.say('<speak>Here is your '+type+' report for '+city+' <break time="2s"/>.');
         response.say(final);
         response.say('</speak>');
         response.send();

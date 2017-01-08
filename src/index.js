@@ -17,15 +17,16 @@ app.launch((request, response) => {
 
 app.intent("GetEvents", (request, response) => {
     
-    var city = request.slot('City');
-    var txt = '';
+    //var city = request.slot('City');
 
-    ax.get('content/'+city+'/topnews/.json')
-      .then((data) => {
-         response.say('Hey it worked!');
+    ax.get('content/chicago/topnews/.json')
+      .then(function (data) {
+        response.say('Hey it worked!');
+        response.send();
       })
-      .catch((error) => {
-        response.say('Sorry there seems to be an issue');
+      .catch(function (error) {
+        response.say('Hey it broke!');
+        response.send();
       });  
     return false;
   }

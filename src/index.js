@@ -26,13 +26,15 @@ app.intent("GetEvents", (request, response) => {
         var listOfcrimes = events.map(function (x) {
             return x.title.split(',')[0]
         });
-        logger.log(listOfcrimes);
-        response.say(listOfcrimes[0]);
+        var final = listOfcrimes.toString();
+        console.log(typeof final);
+        logger.log(final);
+        response.say('status ok');
         response.send();
       })
       .catch(function (error) {
         console.log(error);
-        response.say('Something has gone very wrong.  Try saying, Alexa Ask Block Party what is going on in my city');
+        response.say('status bad');
         response.send();
       });  
     return false;

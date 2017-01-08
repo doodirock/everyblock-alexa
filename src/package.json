@@ -1,0 +1,10 @@
+{
+  "name": "everyblock-alexa",
+  "version": "0.0.1",
+  "main": "index.js",
+  "dependencies": {
+    "alexa-app": "^2.3.4",
+    "bluebird": "^3.4.6",
+    "lodash": "^4.16.4"
+  }
+}

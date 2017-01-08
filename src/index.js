@@ -24,16 +24,21 @@ app.intent("GetEvents", (request, response) => {
     ax.get('content/'+city.toLowerCase()+'/topnews/.json?schema='+type)
       .then(function (complete) {
         var events = complete.data.results;
-        var listOfstuff = events.map(function (x) {
-            var list = x.title+'<break time="1s"/>'+x.attributes.comment+'<break time="2s"/>';
-            return list.replace(/[&]/g, "");
-        });
-        logger.log(listOfstuff);
-        var final = listOfstuff.slice(0,5).toString();
-        response.say('<speak>Here is your '+type+' top 5 report for '+city+' <break time="2s"/>.');
-        response.say(final);
-        response.say('</speak>');
-        response.send();
+        if (events.length > 1) {
+          var listOfstuff = events.map(function (x) {
+              var list = x.title+'<break time="1s"/>'+x.attributes.comment+'<break time="2s"/>';
+              return list.replace(/[&]/g, "");
+          });
+          logger.log(listOfstuff);
+          var final = listOfstuff.slice(0,5).toString();
+          response.say('<speak>Here is your '+type+' top 5 report for '+city+' <break time="2s"/>.');
+          response.say(final);
+          response.say('</speak>');
+          response.send();
+        } else {
+          response.say('<speak>Sorry, but there does not seem to be any reports about '+type+' in this area.');
+          response.send();          
+        }
       })
       .catch(function (error) {
         console.log(error);

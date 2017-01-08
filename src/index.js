@@ -38,5 +38,11 @@ app.intent("GetNews", (request, response) => {
   }
 );
 
+app.error = (exception, request, response) => {
+    console.log('Alex global error handler', exception);
+    response.say('Sorry, something bad happened and there is no way to recover.  OH THE HUMANITY');
+    response.send();
+};
+
 // connect to lambda
 exports.handler = app.lambda();

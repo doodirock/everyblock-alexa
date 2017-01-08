@@ -17,11 +17,12 @@ app.launch((request, response) => {
 
 app.intent("GetEvents", (request, response) => {
     
-    //var city = request.slot('City');
+    var city = request.slot('City');
+    console.log(city);
 
     ax.get('content/chicago/topnews/.json')
       .then(function (data) {
-        response.say('Hey it worked!');
+        response.say('Hey it worked! I can now return a response from the API');
         response.send();
       })
       .catch(function (error) {

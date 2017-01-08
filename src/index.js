@@ -1,7 +1,7 @@
 const _ = require('lodash');
 const alexa = require('alexa-app');
 const axios = require("axios");
-const conf = require('./config.json');
+const conf = require('./data/config.json');
 
 const ax = axios.create({
   baseURL: 'https://api.everyblock.com/',

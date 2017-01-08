@@ -28,7 +28,7 @@ app.intent("GetEvents", (request, response) => {
         });
         var final = listOfcrimes.toString();
         logger.log(final);
-        response.say(final);
+        response.say('status ok');
         response.send();
       })
       .catch(function (error) {

@@ -1,3 +1,4 @@
+const logger = require('tracer').console();
 const _ = require('lodash');
 const alexa = require('alexa-app');
 const axios = require("axios");
@@ -18,15 +19,20 @@ app.launch((request, response) => {
 app.intent("GetEvents", (request, response) => {
     
     var city = request.slot('City');
-    console.log(city);
 
     ax.get('content/'+city.toLowerCase()+'/topnews/.json')
-      .then(function (data) {
-        response.say('Hey it worked! I can now return a response from the API');
+      .then(function (complete) {
+        var events = complete.data.results;
+        var listOfcrimes = events.map(function (x) {
+            return x.title.split(',')[0]
+        });
+        logger.log(listOfcrimes);
+        response.say(listOfcrimes[0]);
         response.send();
       })
       .catch(function (error) {
-        response.say('It seems like Im having trouble finding information about your city.  It may not be supported!');
+        console.log(error);
+        response.say('Something has gone very wrong.  Try saying, Alexa Ask Block Party what is going on in my city');
         response.send();
       });  
     return false;

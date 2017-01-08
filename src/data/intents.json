@@ -14,25 +14,12 @@
         {
           "name": "Week",
           "type": "AMAZON.DayOfWeek"
-        }        
+        },
+        {
+          "name": "Type",
+          "type": "TYPE_OF_NEWS"
+        }                  
       ]
-    },
-    {
-      "intent": "GetNews",
-      "slots": [
-        {
-          "name": "Date",
-          "type": "AMAZON.DATE"
-        },
-        {
-          "name": "City",
-          "type": "AMAZON.US_CITY"
-        },
-        {
-          "name": "Week",
-          "type": "AMAZON.DayOfWeek"
-        }        
-      ]      
     }
   ]
 }

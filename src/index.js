@@ -19,8 +19,9 @@ app.launch((request, response) => {
 app.intent("GetEvents", (request, response) => {
     
     var city = request.slot('City');
+    var type = request.slot('Type');
 
-    ax.get('content/'+city.toLowerCase()+'/topnews/.json')
+    ax.get('content/'+city.toLowerCase()+'/topnews/.json?schema='+type)
       .then(function (complete) {
         var events = complete.data.results;
         var listOfcrimes = events.map(function (x) {
@@ -28,7 +29,9 @@ app.intent("GetEvents", (request, response) => {
         });
         var final = listOfcrimes.toString();
         logger.log(final);
-        response.say('status ok');
+        response.say('<speak>Here is your '+type+' for '+city+' <break time="2s"/>.');
+        response.say(final);
+        response.say('</speak>');
         response.send();
       })
       .catch(function (error) {
@@ -40,16 +43,20 @@ app.intent("GetEvents", (request, response) => {
   }
 );
 
-app.intent("GetNews", (request, response) => {
-    response.say("Whats going on in your hood is amazing.");
-  }
-);
-
 app.error = (exception, request, response) => {
     console.log('Alex global error handler', exception);
     response.say('Sorry, something bad happened and there is no way to recover.  OH THE HUMANITY');
     response.send();
 };
+
+// Helpers
+
+// function renderResponse(awsResponse) {
+//     awsResponse.say('</speak>');
+//     awsResponse.response.response.outputSpeech.type = 'SSML';
+//     awsResponse.response.response.outputSpeech.ssml = awsResponse.response.response.outputSpeech.text;
+//     awsResponse.send();
+// }
 
 // connect to lambda
 exports.handler = app.lambda();

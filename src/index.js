@@ -5,7 +5,7 @@ const conf = require('./config.json');
 
 const ax = axios.create({
   baseURL: 'https://api.everyblock.com/',
-  headers: {'Authorization': conf.secret.Auth}
+  headers: {'Authorization': conf.secret.Auth} // you will need to add your own config file and token here
 });
 
 const app = new alexa.app();

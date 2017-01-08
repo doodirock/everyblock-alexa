@@ -1,6 +1,10 @@
 const _ = require('lodash');
 const alexa = require('alexa-app');
-const Blue = require("bluebird");
+const axios = require("axios");
+
+const ax = axios.create({
+  baseURL: 'https://some-domain.com/api/'
+});
 
 const app = new alexa.app();
 app.launch((request, response) => {
@@ -10,9 +14,9 @@ app.launch((request, response) => {
 });
 
 app.intent("GetEvents", (request, response) => {
-    let city = request.slot("City");
-    let txt = 'Looks like the city of '+city+' is going to have a lovely weekend';
-    response.say(txt);
+    var city = request.slot('City');
+    var txt = 'It seems like the city of '+city+' is going to have a lovely weekend';
+    return response.say(txt);
   }
 );
 

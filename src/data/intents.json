@@ -1,0 +1,38 @@
+{
+  "intents": [
+    {
+      "intent": "GetEvents",
+      "slots": [
+        {
+          "name": "Date",
+          "type": "AMAZON.DATE"
+        },
+        {
+          "name": "City",
+          "type": "AMAZON.US_CITY"
+        },
+        {
+          "name": "Week",
+          "type": "AMAZON.DayOfWeek"
+        }        
+      ]
+    },
+    {
+      "intent": "GetNews",
+      "slots": [
+        {
+          "name": "Date",
+          "type": "AMAZON.DATE"
+        },
+        {
+          "name": "City",
+          "type": "AMAZON.US_CITY"
+        },
+        {
+          "name": "Week",
+          "type": "AMAZON.DayOfWeek"
+        }        
+      ]      
+    }
+  ]
+}

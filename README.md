@@ -1,4 +1,4 @@
-# Random Alexa App that does cool stuff
+# Alexa App that uses every block to give info
 
 ![picture alt](https://cdn.meme.am/cache/instances/folder384/55167384.jpg "Alexa everywhere")
 

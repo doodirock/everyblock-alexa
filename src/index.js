@@ -9,12 +9,12 @@ app.launch((request, response) => {
   //return false;
 });
 
-app.intent("WhoAreWe", (request, response) => {
+app.intent("GetEvents", (request, response) => {
     response.say("Chicago streets for days.");
   }
 );
 
-app.intent("WhatsUp", (request, response) => {
+app.intent("GetNews", (request, response) => {
     response.say("Whats going on in your hood is amazing.");
   }
 );

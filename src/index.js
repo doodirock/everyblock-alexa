@@ -20,13 +20,13 @@ app.intent("GetEvents", (request, response) => {
     var city = request.slot('City');
     console.log(city);
 
-    ax.get('content/chicago/topnews/.json')
+    ax.get('content/'+city.toLowerCase()+'/topnews/.json')
       .then(function (data) {
         response.say('Hey it worked! I can now return a response from the API');
         response.send();
       })
       .catch(function (error) {
-        response.say('Hey it broke!');
+        response.say('It seems like Im having trouble finding information about your city.  It may not be supported!');
         response.send();
       });  
     return false;

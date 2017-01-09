@@ -71,14 +71,5 @@ app.error = (exception, request, response) => {
     response.send();
 };
 
-// Helpers
-
-// function renderResponse(awsResponse) {
-//     awsResponse.say('</speak>');
-//     awsResponse.response.response.outputSpeech.type = 'SSML';
-//     awsResponse.response.response.outputSpeech.ssml = awsResponse.response.response.outputSpeech.text;
-//     awsResponse.send();
-// }
-
 // connect to lambda
 exports.handler = app.lambda();

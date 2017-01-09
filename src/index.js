@@ -69,7 +69,7 @@ app.intent("AMAZON.HelpIntent", (request, response) => {
 );
 
 app.intent("AMAZON.StopIntent", (request, response) => {
-    response.say('<p>Shutting down Block Party.  Good bye!');
+    response.say('<p>Shutting down Block Party.  Good bye!</p>');
   }
 );
 

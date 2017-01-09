@@ -11,7 +11,9 @@ const ax = axios.create({
 
 const app = new alexa.app();
 app.launch((request, response) => {
-  response.say("Block party is ready to give you info about your hood.  What would you like to know?").send();
+  request.getSession();
+  response.say("Block party is ready to give you info about your hood.  What would you like to know?").send();  
+  response.shouldEndSession(false);  
   // if this is an async handler you must return false
   //return false;
 });
@@ -26,7 +28,11 @@ app.intent("GetEvents", (request, response) => {
         var events = complete.data.results;
         if (events.length > 1) {
           var listOfstuff = events.map(function (x) {
-              var list = x.title+'<break time="1s"/>'+x.attributes.comment+'<break time="2s"/>';
+              var list = '';
+              if (type === 'crime') {
+                list = x.title+'<break time="1s"/> Located at <say-as interpret-as="address">'+x.location_name+'</say-as><break time="2s"/>';
+              } 
+              list = x.title+'<break time="1s"/>'+x.attributes.comment+'<break time="2s"/>';
               return list.replace(/[&]/g, "");
           });
           logger.log(listOfstuff);
@@ -34,12 +40,12 @@ app.intent("GetEvents", (request, response) => {
           response.say('<speak>Here is your '+type+' top 5 report for '+city+' <break time="2s"/>.');
           response.say(final);
           response.say('</speak>');
-          response.send();
           response.card({
             type: 'Simple',
             title: 'Your '+type+' Report for '+city+'', // this is not required for type Simple
             content: 'Check out http://chicago.everyblock.com/'+type+'/, for more information.'
-          });          
+          });           
+          response.send();         
         } else {
           response.say('<speak>Sorry, but there does not seem to be any reports about '+type+' in this area.');
           response.send();          

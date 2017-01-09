@@ -31,8 +31,9 @@ app.intent("GetEvents", (request, response) => {
               var list = '';
               if (type === 'crime') {
                 list = x.title+'<break time="1s"/> Located at <say-as interpret-as="address">'+x.location_name+'</say-as><break time="2s"/>';
-              } 
-              list = x.title+'<break time="1s"/>'+x.attributes.comment+'<break time="2s"/>';
+              } else {
+                list = x.title+'<break time="1s"/>'+x.attributes.comment+'<break time="2s"/>';
+              }
               return list.replace(/[&]/g, "");
           });
           logger.log(listOfstuff);

@@ -68,6 +68,11 @@ app.intent("AMAZON.HelpIntent", (request, response) => {
   }
 );
 
+app.intent("AMAZON.StopIntent", (request, response) => {
+    response.say('<p>Shutting down Block Party.  Good bye!');
+  }
+);
+
 app.error = (exception, request, response) => {
     console.log('Alex global error handler', exception);
     response.say('Sorry, something bad happened and there is no way to recover.  OH THE HUMANITY');

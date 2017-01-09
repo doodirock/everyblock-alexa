@@ -62,8 +62,8 @@ app.intent("GetEvents", (request, response) => {
 
 app.intent("AMAZON.HelpIntent", (request, response) => {
     response.say('<p>You can request reports from several different topics in your neighborhood.</p>'
-    +'<p>These topics include, crime, meetups, announcements, pets, improvement, politics, housing, family, events, and kindness'
-    +'<p>For example you can ask Block Party, "What are people saying about crime in Chicago"'
+    +'<p>These topics include, crime, meetups, announcements, pets, improvements, politics, housing, family, events, and kindness</p>'
+    +'<p>For example you can ask Block Party, What are people saying about crime in Chicago, or, tell me about pets in Boston.</p>'
     );
   }
 );

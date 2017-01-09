@@ -53,7 +53,7 @@ app.intent("GetEvents", (request, response) => {
       })
       .catch(function (error) {
         console.log(error);
-        response.say('status bad');
+        response.say('We seems to have encountered an error look for your report, can you please ask again?');
         response.send();
       });  
     return false;

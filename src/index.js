@@ -36,7 +36,6 @@ app.intent("GetEvents", (request, response) => {
               }
               return list.replace(/[&]/g, "");
           });
-          logger.log(listOfstuff);
           var final = listOfstuff.slice(0,5).toString();
           response.say('<speak>Here is your '+type+' top 5 report for '+city+' <break time="2s"/>.');
           response.say(final);

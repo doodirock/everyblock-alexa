@@ -1,3 +1,5 @@
 GetEvents about {Type} in {City}
 GetEvents to report {Type} in {City}
 GetEvents send reports about {Type} in {City}
+GetEvents tell me about {Type} in {City}
+GetEvents what are people saying about {Type} in {City}

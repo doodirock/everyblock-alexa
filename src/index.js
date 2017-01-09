@@ -60,6 +60,11 @@ app.intent("GetEvents", (request, response) => {
   }
 );
 
+app.intent("AMAZON.HelpIntent", (request, response) => {
+    response.say('<p>You can request reports from several different topics in your neighborhood.</p>');
+  }
+);
+
 app.error = (exception, request, response) => {
     console.log('Alex global error handler', exception);
     response.say('Sorry, something bad happened and there is no way to recover.  OH THE HUMANITY');
